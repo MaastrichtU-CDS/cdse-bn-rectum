@@ -1,0 +1,23 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+
+[packages]
+fastapi = "*"
+uvicorn = "*"
+requests = "*"
+black = "==21.6b0"
+aiofiles = "*"
+jinja2 = "*"
+pytest-asyncio = "*"
+httpx = "*"
+responses = "*"
+numpy = "*"
+pandas = "*"
+thomas-core = "*"
+
+[requires]
+python_version = "3.8"
