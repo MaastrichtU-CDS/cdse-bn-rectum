@@ -35,7 +35,6 @@ class BayesianNetworkRectalCancer(client.PredictionModelBase):
 
 @router.get("/_query")
 def example_extra_route():
-    print("example route")
     return client.PredictionModelStore().get_model_instance().result
 
 
