@@ -4,11 +4,13 @@ from bn import BayesianNetwork
 import client
 from typing import Dict, Union
 from fastapi import APIRouter
+from pathlib import Path
 
 
 router = APIRouter()
 
-with open("bn\\data\\rectalcancer.json", "r") as file:
+data_folder = Path("bn/data/")
+with open(data_folder / "rectalcancer.json", "r") as file:
     bnFile = file.read().replace("\n", " ")
     bnJson = json.loads(bnFile)
 
