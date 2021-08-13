@@ -35,35 +35,12 @@ class BayesianNetworkRectalCancer(client.PredictionModelBase):
         pass
 
 
-@router.post("/_query")
+@router.post("/network/_query")
 def get_results_from_calculation():
     return {
         "query": [],
         "probabilities": client.PredictionModelStore().get_model_instance().result,
     }
-
-
-@router.get("/network")
-def get_all_available_networks():
-    return json.loads(
-        """[
-            {
-                "resourceType": "Network",
-                "_id": "/network/rectalcancer",
-                "_links": {
-                    "_self": "/network/rectalcancer",
-                    "_collection": "/network",
-                    "owner": "/user/1"
-                },
-                "_excluded": [
-                    "json"
-                ],
-                "id": "rectalcancer",
-                "name": "Rectal cancer"
-            }
-                ]"""
-    )
-
 
 @router.get("/network/rectalcancer")
 def get_initial_bn_view():
