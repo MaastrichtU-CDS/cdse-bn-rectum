@@ -6,7 +6,6 @@ from typing import Dict, Union
 from fastapi import APIRouter
 from pathlib import Path
 
-
 router = APIRouter()
 
 data_folder = Path("bn/data/")
@@ -36,14 +35,17 @@ class BayesianNetworkRectalCancer(client.PredictionModelBase):
 
 
 @router.post("/network/_query")
-def get_results_from_calculation():
+async def get_results_from_calculation(session_token):
+    await client.check_session_token(session_token)
     return {
         "query": [],
         "probabilities": client.PredictionModelStore().get_model_instance().result,
     }
 
+
 @router.get("/network/rectalcancer")
-def get_initial_bn_view():
+async def get_initial_bn_view(session_token):
+    await client.check_session_token(session_token)
     return json.loads("""{"json": %s, "id": "rectalcancer"}""" % bnFile)
 
 
